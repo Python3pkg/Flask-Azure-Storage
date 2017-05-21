@@ -113,7 +113,7 @@ def _bp_static_url(blueprint):
 def _gather_files(app, hidden):
     dirs = [(six.u(app.static_folder), app.static_url_path)]
     if hasattr(app, 'blueprints'):
-        blueprints = app.blueprints.values()
+        blueprints = list(app.blueprints.values())
         bp_details = lambda x: (x.static_folder, _bp_static_url(x))
         dirs.extend([bp_details(x) for x in blueprints if x.static_folder])
 
